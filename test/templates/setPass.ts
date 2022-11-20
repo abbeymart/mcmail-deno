@@ -5,7 +5,7 @@
  * @Description: mc-central-ts: set-password email templates
  */
 
-import { EmailPropsType } from "../../src";
+import { EmailPropsType } from "../../src/index.ts";
 
 export const setPassSubject = (props: EmailPropsType) => {
     return `Hi ${props.name? props.name : ''}, mConnect | Password Reset Successfully`;

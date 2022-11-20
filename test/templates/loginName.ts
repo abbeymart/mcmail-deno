@@ -5,7 +5,7 @@
  * @Description: mc-central-ts: login-name email templates
  */
 
-import { EmailPropsType } from "../../src";
+import { EmailPropsType } from "../../src/index.ts";
 
 export const loginNameSubject = (props: EmailPropsType) => {
     return `Hi ${props.name? props.name : ''}, mConnect | Login Name Request`;

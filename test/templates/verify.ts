@@ -5,7 +5,7 @@
  * @Description: mc-central-ts: verify-account email templates
  */
 
-import { EmailPropsType } from "../../src";
+import { EmailPropsType } from "../../src/index.ts";
 
 export const verifySubject = (props: EmailPropsType) => {
     return `Hi ${props.name ? props.name : ''}, Welcome to mConnect | Verify ${props.taskSubject || "Email & Access Information"}`;

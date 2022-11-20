@@ -5,7 +5,7 @@
  * @Description: mc-central-ts: change-password email templates
  */
 
-import { EmailPropsType } from "../../src";
+import { EmailPropsType } from "../../src/index.ts";
 
 export const changeTaskSubject = (props: EmailPropsType) => {
     return `Hi ${props.name ? props.name : ''}, mConnect | ${props.taskSubject || 'Task Completed' }`;

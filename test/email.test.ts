@@ -9,7 +9,7 @@ import { assertEquals, mcTest, postTestResult } from '../test_deps.ts';
 import { newEmail } from "../src/index.ts";
 
 import { EmailConfigType, EmailRequestType, EmailTemplateType } from "../src/index.ts";
-import { contactInfo, emailConfig, toEmailAddress } from "./config/emailConfig.ts";
+import { contactInfo, emailConfig, toEmailAddress } from "../../config/emailConfig.ts";
 import { verifySubject, verifyContentText, verifyContentHtml } from "./templates/index.ts";
 
 const serverConfig: EmailConfigType = {
