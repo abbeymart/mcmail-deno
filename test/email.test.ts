@@ -5,12 +5,12 @@
  * @Description: mc-central-ts: testing of the mc-mail package
  */
 
-import { assertEquals, mcTest, postTestResult } from '@mconnect/mctest';
-import { newEmail } from "../src";
+import { assertEquals, mcTest, postTestResult } from '../test_deps.ts';
+import { newEmail } from "../src/index.ts";
 
-import { EmailConfigType, EmailRequestType, EmailTemplateType } from "../src";
-import { contactInfo, emailConfig, toEmailAddress } from "./config/emailConfig";
-import { verifySubject, verifyContentText, verifyContentHtml } from "./templates";
+import { EmailConfigType, EmailRequestType, EmailTemplateType } from "../src/index.ts";
+import { contactInfo, emailConfig, toEmailAddress } from "./config/emailConfig.ts";
+import { verifySubject, verifyContentText, verifyContentHtml } from "./templates/index.ts";
 
 const serverConfig: EmailConfigType = {
     username : emailConfig.username,
@@ -65,6 +65,6 @@ const verifyError = {
         },
     });
 
-    await postTestResult();
+    postTestResult();
 
 })();

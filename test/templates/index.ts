@@ -4,10 +4,10 @@
  * @Description: email templates
  */
 
-export * from "./verify"
-export * from "./changePass";
-export * from "./resetPass";
-export * from "./setPass";
-export * from "./loginName";
-export * from "./changeRequest";
-export * from "./changeTask"
+export * from "./verify.ts"
+export * from "./changePass.ts";
+export * from "./resetPass.ts";
+export * from "./setPass.ts";
+export * from "./loginName.ts";
+export * from "./changeRequest.ts";
+export * from "./changeTask.ts"

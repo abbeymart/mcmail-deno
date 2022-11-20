@@ -7,6 +7,21 @@
 
 import { Readable } from "nodemailer/lib/xoauth2";
 import { AttachmentLike } from "nodemailer/lib/mailer";
+import { Buffer } from "https://deno.land/std@0.160.0/io/buffer.ts";
+
+export type ValueType =
+    | Record<string, unknown>
+    | Array<Record<string, unknown>>
+    | string
+    | number
+    | Array<string>
+    | Array<number>
+    | boolean
+    | Array<boolean>;
+
+export interface ObjectType {
+    [key: string]: ValueType;
+}
 
 export interface EmailConfigType {
     username: string;

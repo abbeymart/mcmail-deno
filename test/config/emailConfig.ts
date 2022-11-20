@@ -1,5 +1,4 @@
 
-
 export const emailConfig = {
     username : "abiakindele@gmail.com",
     password : "SvGjR4hUD5xtAQH9",

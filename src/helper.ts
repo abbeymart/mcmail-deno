@@ -5,23 +5,23 @@
  * @Description: mc-crud helper functions
  */
 
-import { getResMessage, ResponseMessage } from "@mconnect/mcresponse";
-import { EmailConfigType } from "./types";
+import { getResMessage, ResponseMessage } from "../deps.ts";
+import { EmailConfigType, ObjectType } from "./types.ts";
 
-export function isEmptyObject(val: object): boolean {
+export function isEmptyObject(val: ObjectType): boolean {
     return !(Object.keys(val).length > 0 && Object.values(val).length > 0);
 }
 
 export function validateConfig(config: EmailConfigType): ResponseMessage {
-    if (isEmptyObject(config) || config.serverUrl === "" || config.port === 0 || config.username === "" || config.password === "" || config.msgFrom === "") {
+    if (isEmptyObject(config as unknown as ObjectType) || config.serverUrl === "" || config.port === 0 || config.username === "" || config.password === "" || config.msgFrom === "") {
         return getResMessage("paramsError", {
             message: "email-configuration: user, password, server, port and message-from are required",
-            value  : null,
+            value  : {},
         })
     } else {
         return getResMessage("success", {
             message: "email-configuration successfully validated",
-            value  : null,
+            value  : {},
         })
     }
 }

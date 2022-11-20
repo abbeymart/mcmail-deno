@@ -4,11 +4,11 @@
  * @Description: mc-sendmail function
  */
 
-import { isEmptyObject, validateConfig } from "./helper";
 import * as nodemailer from "nodemailer";
-import { getResMessage, ResponseMessage } from "@mconnect/mcresponse";
-import { EmailRequestType, EmailTemplateType, EmailConfigType, TemplateDataType } from "./types";
 import Mail = require("nodemailer/lib/mailer");
+import { isEmptyObject, validateConfig } from "./helper.ts";
+import { getResMessage, ResponseMessage } from "../deps.ts";
+import { EmailRequestType, EmailTemplateType, EmailConfigType, TemplateDataType } from "./types.ts";
 
 class Email {
     protected emailUser: string;
@@ -28,7 +28,7 @@ class Email {
         this.serverUrl = config.serverUrl
         this.msgFrom = config.msgFrom
         this.request = {fromEmail: "", toEmail: [], successMessage: "", requestName: "", templateData: {}}
-        this.template = {text: ({}) => "", subject: ({}) => ""}
+        this.template = {text: () => "", subject: () => ""}
         this.templateData = {}
     }
 
@@ -62,7 +62,7 @@ class Email {
 
     activateMailServer() {
         // environment:
-        const sysEnv = process.env.MC_ACCESS_ENV || "development";
+        const sysEnv = Deno.env.get("MC_ACCESS_ENV") || "development";
         this.transporter = nodemailer.createTransport({
             host          : this.serverUrl,
             port          : this.emailPort,
@@ -111,8 +111,9 @@ class Email {
                 html   : this.template.html ? this.template.html(this.templateData) : ""  // html body
             });
             return getResMessage("success", {
-                message: this.request.requestName ? (this.request.successMessage ? `${this.request.requestName}: ${this.request.successMessage}` :
-                    `${this.request.requestName}: Requested Email sent to your registered email. Check you email for details.`) :
+                message: this.request.requestName ?
+                    (this.request.successMessage ? `${this.request.requestName}: ${this.request.successMessage}` :
+                        `${this.request.requestName}: Requested Email sent to your registered email. Check you email for details.`) :
                     "Requested Email sent to your registered email. Check you email for details.",
                 value  : result,
             });
